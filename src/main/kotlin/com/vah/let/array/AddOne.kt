@@ -11,30 +11,19 @@ import kotlin.math.sign
 
 fun addOne(arr: IntArray): IntArray {
     if (arr.last() + 1 > 9) {
-        var needAddBit = true
         var i = arr.size - 1
         while (i >= 0) {
-            val a = if (needAddBit) 1 else 0
-            if (arr[i] + a > 9) {
-                needAddBit = true
+            if (arr[i] + 1 > 9) {
                 arr[i] = 0
             } else {
-                needAddBit = false
                 arr[i] = arr[i] + 1
-                break
+                return arr
             }
             i--
         }
-        return if (needAddBit) {
-            val newArr = IntArray(arr.size + 1)
-            newArr[0] = 1
-            for (i in arr.indices) {
-                newArr[i + 1] = arr[i]
-            }
-            newArr
-        } else {
-            arr
-        }
+        val newArr = IntArray(arr.size + 1)
+        newArr[0] = 1
+        return newArr
     } else {
         arr[arr.size - 1] = arr.last() + 1
         return arr
@@ -42,5 +31,5 @@ fun addOne(arr: IntArray): IntArray {
 }
 
 fun main() {
-    addOne(intArrayOf(8, 9, 9, 9)).forEach { print(it) }
+    addOne(intArrayOf(9, 9, 9, 9)).forEach { print(it) }
 }
