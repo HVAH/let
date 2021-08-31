@@ -1,7 +1,8 @@
 package com.vah.let.datastructure.linked;
 
+
 /**
- *@Description 单项链表
+ *@Description 单链表
  *@Author HuangJiang
  **/
 
@@ -9,15 +10,74 @@ fun main() {
     val heroNode1 = HeroNode(1, "a", "A", null)
     val heroNode2 = HeroNode(2, "b", "B", null)
     val heroNode3 = HeroNode(3, "c", "C", null)
+    val heroNode4 = HeroNode(4, "d", "D", null)
     val linkedList = LinkedList()
     linkedList.sortAdd2(heroNode2)
     linkedList.sortAdd2(heroNode3)
     linkedList.sortAdd2(heroNode1)
+    linkedList.sortAdd2(heroNode4)
     linkedList.show()
+
+    println("findK============")
+    val findK = findK(4, linkedList)
+    println(findK)
+
+    println("reverse============")
+    reverse(linkedList).show()
+
+
+    println("reverseprint=========")
+    linkedList.head.next?.let { reversePrint1(it) }
+}
+
+
+// test 1  查找单链表的倒数第k个节点
+fun findK(k: Int, linkedList: LinkedList): HeroNode? {
+    if (k <= 0) return null
+    if (linkedList.head == null) return null
+    var temp = linkedList.head
+    var size = 1
+    while (temp.next != null) {
+        size ++
+        temp = temp.next!!
+    }
+    if (k > size) return null
+    val index = size - k + 1
+    temp = linkedList.head
+    var count = 1
+    while(index != count) {
+        temp = temp.next!!
+        count++
+    }
+    return temp
+}
+// test2 单向链表反转  头插入法  依次将下一个元素插入到头部
+fun reverse(linkedList: LinkedList): LinkedList {
+    var temp = linkedList.head.next
+    while (temp?.next != null) {
+        val next = temp.next
+        temp.next = temp.next?.next
+        next?.next = linkedList.head.next
+        linkedList.head.next = next
+    }
+    return linkedList
+}
+
+// test3 从尾到头打印单链表
+// 1 先反转再打印 结合以上的reverse和show方法就可实现
+// 2 放入数组 反向遍历
+// 3 栈
+
+// 2 使用递归 只要还有next就继续递归  这样就会从最后一个开始打印
+fun reversePrint1(heroNode: HeroNode) {
+    if (heroNode.next != null) {
+        reversePrint1(heroNode.next!!)
+    }
+    println(heroNode.toString())
 }
 
 class LinkedList {
-    private val head = HeroNode(0, "", "", null)
+     val head = HeroNode(0, "", "", null)
 
     /**
      * 插入节点
