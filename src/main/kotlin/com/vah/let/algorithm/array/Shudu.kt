@@ -23,15 +23,61 @@ package com.vah.let.algorithm.array
 
  * **/
 
+/**
+ * 分别使用三个二维数组记录每行每列每个3x3单元格是否出现这个数
+ */
 fun shudu(arr: Array<CharArray>): Boolean {
-    var result = true
+    val cell = Array(arr.size) { BooleanArray(arr.size) }
+    val column = Array(arr.size) { BooleanArray(arr.size) }
+    val line = Array(arr.size) { BooleanArray(arr.size) }
     for (i in arr.indices) {
-        for(j in arr.indices) {
-            if (arr[i][j] == '.') {
+        for (j in arr.indices) {
+            val value = arr[i][j]
+            if (value == '.') {
                 continue
             }
-
+            // 当前格子的值
+            val num = value - '0' - 1
+            // 当前格子所在的单元格
+            val k = i / 3 * 3 + j / 3
+            if (cell[k][num] || column[j][num] || line[i][num]) {
+                return false
+            }
+            cell[k][num] = true
+            column[j][num] = true
+            line[i][num] = true
         }
     }
-return false
+    return true
 }
+
+fun shudu2(arr: Array<CharArray>): Boolean {
+    val cell = IntArray(arr.size)
+    val column = IntArray(arr.size)
+    val line = IntArray(arr.size)
+    for (i in arr.indices) {
+        for (j in arr.indices) {
+            val value = arr[i][j]
+            if (value == '.') {
+                continue
+            }
+            // 当前格子的值 进行位运算
+            val num = 1 shl (value - '0' - 1)
+            // 当前格子所在的单元格
+            val k = i / 3 * 3 + j / 3
+            if (cell[k] and num > 0 || column[j] and num > 0 || line[i] and num > 0) {
+                return false
+            }
+            cell[k] = num or cell[k]
+            line[i] = num or line[i]
+            column[j] = num or column[j]
+        }
+    }
+    return true
+}
+
+fun main() {
+    println(4 and 2)
+}
+
+
