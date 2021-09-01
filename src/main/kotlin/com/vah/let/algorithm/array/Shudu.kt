@@ -65,19 +65,19 @@ fun shudu2(arr: Array<CharArray>): Boolean {
             val num = 1 shl (value - '0' - 1)
             // 当前格子所在的单元格
             val k = i / 3 * 3 + j / 3
-            if (cell[k] and num > 0 || column[j] and num > 0 || line[i] and num > 0) {
+            if (cell[k] and num == num || column[j] and num == num || line[i] and num == num) {
                 return false
             }
-            cell[k] = num or cell[k]
-            line[i] = num or line[i]
-            column[j] = num or column[j]
+            cell[k] += num
+            line[i] += num
+            column[j] += num
         }
     }
     return true
 }
 
 fun main() {
-    println(4 and 2)
+    println(3 and 1)
 }
 
 
