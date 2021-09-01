@@ -68,7 +68,7 @@ fun reverse(linkedList: LinkedList): LinkedList {
 // 2 放入数组 反向遍历
 // 3 栈
 
-// 2 使用递归 只要还有next就继续递归  这样就会从最后一个开始打印
+// 4 使用递归 只要还有next就继续递归  这样就会从最后一个开始打印
 fun reversePrint1(heroNode: HeroNode) {
     if (heroNode.next != null) {
         reversePrint1(heroNode.next!!)
