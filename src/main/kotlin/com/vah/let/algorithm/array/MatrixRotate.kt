@@ -1,5 +1,7 @@
 package com.vah.let.algorithm.array;
 
+import kotlin.concurrent.thread
+
 /**
  *@Description 图像旋转  旋转90度
  *@Author HuangJiang
@@ -25,6 +27,21 @@ fun rotate(matrix: Array<IntArray>) {
 
 }
 
+fun rotate2(matrix: Array<IntArray>) {
+    val size = matrix.size
+    for ( i in 0 until size / 2) {
+        for (j in i until size - i -1) {
+            val temp = matrix[i][j]
+            val m = size - j -1
+            val n = size - i - 1
+            matrix[i][j] = matrix[m][i]
+            matrix[m][i] = matrix[n][m]
+            matrix[n][m] = matrix[j][n]
+            matrix[j][n] = temp
+        }
+    }
+}
+
 fun show(matrix: Array<IntArray>) {
     for (ints in matrix) {
         for (int in ints) {
@@ -37,7 +54,7 @@ fun show(matrix: Array<IntArray>) {
 fun main() {
     val arr = arrayOf(intArrayOf(1, 2, 3), intArrayOf(4, 5, 6), intArrayOf(7, 8, 9))
     show(arr)
-    rotate(arr)
+    rotate2(arr)
     println("rotate(arr) =======")
     show(arr)
 }
