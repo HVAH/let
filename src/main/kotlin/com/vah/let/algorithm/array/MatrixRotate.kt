@@ -26,7 +26,7 @@ fun rotate(matrix: Array<IntArray>) {
     }
 
 }
-
+// 从外圈到内圈旋转
 fun rotate2(matrix: Array<IntArray>) {
     val size = matrix.size
     for ( i in 0 until size / 2) {
