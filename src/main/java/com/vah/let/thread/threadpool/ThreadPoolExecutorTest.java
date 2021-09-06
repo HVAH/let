@@ -118,7 +118,7 @@ public class ThreadPoolExecutorTest {
                 5,
                 10,
                 1, TimeUnit.MINUTES,
-                new ArrayBlockingQueue<Runnable>(10),
+                new ArrayBlockingQueue<>(10),
                 new ThreadPoolExecutor.CallerRunsPolicy());
         Future<String> future = poolExecutor.submit(() -> {
             Thread.sleep(500);
