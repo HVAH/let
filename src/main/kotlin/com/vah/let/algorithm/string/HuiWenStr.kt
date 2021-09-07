@@ -1,7 +1,7 @@
 package com.vah.let.algorithm.string;
 
 /**
- *@Description  中心扩展法
+ *@Description  最长回文串 中心扩展法
  *@Author HuangJiang
  **/
 fun expand(s: String): String {
@@ -37,14 +37,22 @@ fun expandLength(s: String, l: Int, r: Int): Int {
     }
 }
 
-fun baoli(s: String) {
-
-}
-
-fun isHuiWenStr(s: String) {
-    for (i in s.indices) {
-
+/**
+ *@Description  验证回文串
+ * 给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
+ * 说明：本题中，我们将空字符串定义为有效的回文串
+ *@Author HuangJiang
+ **/
+fun isPalindrome(s: String): Boolean {
+    val s = s.replace(Regex("[^a-zA-Z0-9]"), "").toLowerCase()
+    if (s.length == 1 || s.isBlank()) {
+        return true
     }
+    for (i in 0 until s.length / 2) {
+        if (s[i] != s[s.length - i -1])
+            return false
+    }
+    return true
 }
 
 fun main() {
