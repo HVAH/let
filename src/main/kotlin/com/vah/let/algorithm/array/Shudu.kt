@@ -64,7 +64,7 @@ fun shudu2(arr: Array<CharArray>): Boolean {
             // 当前格子的值 进行位运算
             val num = 1 shl (value - '0' - 1)
             // 当前格子所在的单元格
-            val k = i / 3 * 3 + j / 3
+            val k = i / 3 * 3 + j / 3  // i /3 * 3 范围是 0~3~6 加上 j /3 0~2  是0~8 对应9个单元格
             if (cell[k] and num == num || column[j] and num == num || line[i] and num == num) {
                 return false
             }
