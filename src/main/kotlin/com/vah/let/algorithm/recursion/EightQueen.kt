@@ -59,7 +59,7 @@ fun judgeKill(arr: IntArray, n: Int): Boolean {
     //
     for (i in 0 until n) {
         // arr[i] == arr[n] 表示在同一列  (x2 - x1) / (y2 -y1) = 1/-1 表示斜率为1或-1 表示在同一斜线上
-        if (arr[i] == arr[n] || abs(i - n) == abs(arr[i] - arr[n])) {
+        if (arr[i] == arr[n] || n - i == abs(arr[i] - arr[n])) {
             // 表示冲突
             return false
         }
