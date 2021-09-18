@@ -9,23 +9,27 @@ class InsertSort {
 }
 
 fun main() {
-    sort(intArrayOf(9,3,4,2,0,6,5))
+    sort(intArrayOf(8, 9, 1, 7, 2, 3, 5, 4, 6, 0))
 
 }
 
-fun sort(arr: IntArray) {
+private fun sort(arr: IntArray) {
+    var count = 0
     for (i in 1 until arr.size) {
         // 从第二个元素开始向前插入
         val insertV = arr[i]
-        var insertIndex = i - 1
-        while (insertIndex >= 0 && insertV < arr[insertIndex]) {
+        var insertIndex = i
+        while (insertIndex - 1 >= 0 && insertV < arr[insertIndex - 1]) {
             // 将前面的元素依次往后面移动
-            arr[insertIndex + 1] = arr[insertIndex]
+            arr[insertIndex] = arr[insertIndex - 1]
             insertIndex--
+            count++
         }
-        arr[insertIndex + 1] = insertV
+        arr[insertIndex] = insertV
     }
     arr.forEach { print(it) }
+    println()
+    println(count)
 }
 
 
