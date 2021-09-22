@@ -14,7 +14,7 @@ fun main() {
     val message = totalNQueens(10)
     println("=======================")
     println(message)
-    println(countQ(10, 0, mutableListOf(), mutableListOf(), mutableListOf()))
+    println(countQ(10, 0, mutableListOf(), mutableListOf(), mutableListOf(), IntArray(10)))
 }
 
 // n 皇后
@@ -73,9 +73,12 @@ fun countQ(
     row: Int,
     lineList: MutableList<Int>,
     inclined1List: MutableList<Int>,
-    inclined2List: MutableList<Int>
+    inclined2List: MutableList<Int>,
+    arr: IntArray
 ): Int {
     if (n == row) {
+        arr.forEach { print(it) }
+        println()
         // 最后一个摆好了 解的次数加一
         return 1
     }
@@ -96,10 +99,11 @@ fun countQ(
         }
 
         // 表示可以改在这个位置  递归摆放第 row+1行上的皇后
+        arr[row] = i
         lineList.add(i)
         inclined1List.add(inclined1)
         inclined2List.add(incLined2)
-        count += countQ(n, row + 1, lineList, inclined1List, inclined2List)
+        count += countQ(n, row + 1, lineList, inclined1List, inclined2List,arr)
         // 上面的调用结束后  表示 [row][i] 后面可能摆放的皇后都尝试完了 这是需要摆 [row][i++] 了  得移除[i]这个位置  尝试进行下一个位置的摆放
         lineList.remove(i)
         inclined1List.remove(inclined1)

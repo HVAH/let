@@ -15,6 +15,16 @@ fun main() {
     s3(intArrayOf(8, 9, 1, 7, 2, 3, 5, 4, 6, 0))
     println()
     println(nQ(9))
+
+    for (i in 0..9) {
+        try {
+            println()
+            return
+        } catch (e: Exception) {
+        } finally {
+        }
+    }
+
 }
 
 fun shellSort(arr: IntArray) {
