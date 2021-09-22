@@ -1,5 +1,7 @@
 package com.vah.let.algorithm.sort;
 
+import com.vah.let.algorithm.recursion.countQ
+
 /**
  *@Description 希尔排序
  *@Author HuangJiang
@@ -11,6 +13,8 @@ fun main() {
     shellSort(intArrayOf(8, 9, 1, 7, 2, 3, 5, 4, 6, 0))
     shellSort2(intArrayOf(8, 9, 1, 7, 2, 3, 5, 4, 6, 0))
     s3(intArrayOf(8, 9, 1, 7, 2, 3, 5, 4, 6, 0))
+    println()
+    println(nQ(9))
 }
 
 fun shellSort(arr: IntArray) {
@@ -76,4 +80,38 @@ fun s3(arr: IntArray) {
         g /= 2
     }
     arr.forEach { print(it) }
+}
+
+
+fun nQ(n: Int): Int {
+    return nQ(n, 0, mutableListOf(), mutableListOf(), mutableListOf())
+}
+
+fun nQ(n: Int, row:Int, lineList: MutableList<Int>, xie1List: MutableList<Int>, xie2List: MutableList<Int>): Int{
+    if (n == row) {
+        // 完成一种解法
+        return 1
+    }
+        var count = 0
+    for (i in 0 until n) {
+        if (lineList.contains(i)) {
+            continue
+        }
+        val xie1 = row - i
+        if (xie1List.contains(xie1)) {
+            continue
+        }
+        val xie2 = row + i
+        if (xie2List.contains(xie2)) {
+            continue
+        }
+        lineList.add(i)
+        xie1List.add(xie1)
+        xie2List.add(xie2)
+        count += nQ(n, row + 1, lineList, xie1List, xie2List)
+        lineList.remove(i)
+        xie1List.remove(xie1)
+        xie2List.remove(xie2)
+    }
+    return count
 }
