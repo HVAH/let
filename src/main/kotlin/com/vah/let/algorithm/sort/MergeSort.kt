@@ -41,6 +41,7 @@ fun mergeSort(arr: IntArray, left: Int, right: Int, tempArr: IntArray) {
         var tLeft = left
         var t = 0
         while (tLeft <= right) {
+
             arr[tLeft++] = tempArr[t++]
         }
     }
