@@ -14,9 +14,11 @@ fun main() {
 }
 
 fun heapSort(arr: IntArray) {
+    //1 构建大顶堆(一种完全二叉树 父节点大于等于其左右节点)
     for (i in arr.size / 2 - 1 downTo  0 ) {
         transformHeap(arr, i, arr.size)
     }
+    //2 调整交换
     for (i in arr.size - 1 downTo  1) {
         val t = arr[i]
         arr[i] = arr[0]
@@ -26,7 +28,7 @@ fun heapSort(arr: IntArray) {
 }
 
 /**
- * 功能描述: 转换成大顶堆(一种完全二叉树 父节点大于等于其左右节点)
+ * 功能描述: 转换堆
  * @Param: arr 数组
  * @Param: i 非叶子节点在数组中的索引
  * @Param: length 需要调整的数组的长度
@@ -43,7 +45,7 @@ fun transformHeap(arr: IntArray, i: Int, length: Int) {
         if (arr[k] > t) {
             arr[i] = arr[k]
             i = k
-        } else {
+        } else { // 从下至上所以可以直接退出
             break
         }
         k = k * 2 + 1 // 继续左节点
