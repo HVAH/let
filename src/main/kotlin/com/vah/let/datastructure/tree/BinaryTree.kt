@@ -58,6 +58,10 @@ class Node(
         }
         return node
     }
+
+    override fun toString(): String {
+        return "Node(value=$value)"
+    }
 }
 
 /**
