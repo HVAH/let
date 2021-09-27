@@ -49,16 +49,14 @@ fun mergeTwoLists(l1: ListNode?, l2: ListNode?): ListNode? {
                 t1pre = t1pre?.next // t1pre也要往后移动
             }
             t2 = newt2
-        } else { // t1到下一个 继续与t2对比
+        } else { // t1往后移动 继续与t2对比
             t1pre = t1
             t1 = t1?.next
         }
     }
-    // 讲t2多的直接加到t1尾部
-    while (t2!=null) {  // 因为t1此时==null 所以用t1pre
+    // 将t2多的直接加到t1尾部
+    if (t2!=null) {  // 因为t1此时==null 所以用t1pre
         t1pre?.next = t2
-        t1pre = t2
-        t2 = t2?.next
     }
     return head
 }

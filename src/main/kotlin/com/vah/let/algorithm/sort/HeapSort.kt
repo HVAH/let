@@ -8,18 +8,18 @@ class HeapSort {
 }
 
 fun main() {
-    val arr = intArrayOf(4,6,8,5,9)
+    val arr = intArrayOf(4, 6, 8, 5, 9)
     heapSort(arr)
     println()
 }
 
 fun heapSort(arr: IntArray) {
     //1 构建大顶堆(一种完全二叉树 父节点大于等于其左右节点)
-    for (i in arr.size / 2 - 1 downTo  0 ) {
+    for (i in arr.size / 2 - 1 downTo 0) {
         transformHeap(arr, i, arr.size)
     }
     //2 调整交换
-    for (i in arr.size - 1 downTo  1) {
+    for (i in arr.size - 1 downTo 1) {
         val t = arr[i]
         arr[i] = arr[0]
         arr[0] = t
@@ -49,6 +49,25 @@ fun transformHeap(arr: IntArray, i: Int, length: Int) {
             break
         }
         k = k * 2 + 1 // 继续左节点
+    }
+    arr[i] = t
+}
+
+fun t(arr: IntArray, i: Int, length: Int) {
+    var i = i
+    val t = arr[i]
+    var k = i * 2 + 1
+    while (k < length) {
+        if (k + 1 < length && arr[k] < arr[k + 1]) {
+            k++
+        }
+        if (arr[k] > arr[i]) {
+            arr[i] = arr[k]
+            i = k
+        } else {
+            break
+        }
+        k = k * 2 + 1
     }
     arr[i] = t
 }
