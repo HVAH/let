@@ -7,12 +7,12 @@ package com.vah.let.algorithm.linked
  **/
 
 
-class ListNode(var value: Int) {
+class ListNode(var `val`: Int) {
     var next: ListNode? = null
 }
 
 fun deleteNode(node: ListNode?) {
-    node?.value = node?.next?.value!!
+    node?.`val` = node?.next?.`val`!!
     node?.next = node.next!!.next
 }
 
