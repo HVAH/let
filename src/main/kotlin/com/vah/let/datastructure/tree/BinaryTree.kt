@@ -93,8 +93,14 @@ class ArrayBinaryTree(
 fun main() {
     val tree = BinaryTree()
     val node = Node(1)
-    node.l = Node(2, Node(4), Node(5))
-    node.r = Node(3, Node(6), Node(7))
+    node.l = Node(2,
+        Node(4),
+        Node(5)
+    )
+    node.r = Node(3,
+        Node(6),
+        Node(7)
+    )
     tree.root = node
     tree.beforeErgodic()
     println("==========================")

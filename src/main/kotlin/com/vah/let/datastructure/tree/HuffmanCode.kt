@@ -48,7 +48,6 @@ fun getAllCode(str: String): Map<Char, String> {
 }
 
 fun getAllCode(hNode: HNode, codes: MutableMap<Char, String>, str: String) {
-    val str = str.toString()
     if (hNode.char == null) { // 不是叶子节点
         hNode?.l?.let {
             getAllCode(it, codes, str + "0")
