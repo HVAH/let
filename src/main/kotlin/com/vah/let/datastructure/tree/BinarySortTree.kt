@@ -50,7 +50,7 @@ class BinarySortTree {
                     // 找到右子树上最小的值
                     var t = tar.r?.getMinValue()!!
                     val tp = searchParent(t)
-                    if (tp?.l?.value == t) {
+                    if (tp?.l?.value == t) { // 如果t是tp的左节点
                         tp.l = null
                     } else {
                         tp?.r = null
