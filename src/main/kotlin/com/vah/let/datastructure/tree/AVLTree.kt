@@ -1,14 +1,13 @@
 package com.vah.let.datastructure.tree;
 
 import com.vah.let.isNotNull
-import kotlin.math.abs
 import kotlin.math.max
 
 /**
  *@Description 平衡二叉树
  *@Author HuangJiang
  **/
-class AvlTree {
+class AVLTree {
     var root: AVLNode? = null
 
     fun add(value: Int) {
@@ -28,7 +27,7 @@ class AvlTree {
 
 fun main() {
     val arr = intArrayOf(10, 11, 7, 6, 8, 9)
-    val avlTree = AvlTree()
+    val avlTree = AVLTree()
     for (i in arr) {
         avlTree.add(i)
     }
@@ -62,7 +61,7 @@ class AVLNode(
         }
 
         if (this.rightHeight() - this.leftHeight() > 1) { // 需要将树进行旋转 左旋
-            if (this.r != null && this.r!!.leftHeight() > this.r!!.rightHeight() ){
+            if (this.r != null && this.r!!.leftHeight() > this.r!!.rightHeight()) { //
                 this.r?.rightRotate()
             }
             this.leftRotate()
@@ -78,7 +77,7 @@ class AVLNode(
         }
     }
 
-    private fun rightRotate() {
+     fun rightRotate() {
         val newNode = AVLNode(this.value)
         newNode.r = this.r
         newNode.l = this.l?.r
@@ -87,7 +86,7 @@ class AVLNode(
         this.l = this.l?.l
     }
 
-    private fun leftRotate() {
+     fun leftRotate() {
         val newNode = AVLNode(this.value)
         newNode.l = this.l
         newNode.r = this.r?.l
