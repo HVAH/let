@@ -13,7 +13,7 @@ fun main() {
     // 物品价值
     val value = intArrayOf(1500, 3000, 2000)
     // 背包容量
-    val m = 4
+    val m = 8
     // 物品个数
     val n = value.size
 
@@ -39,6 +39,8 @@ fun main() {
                 if (v[i - 1][j] < value[i - 1] + v[i - 1][j - w[i - 1]]) { // 记录最优解
                     l[i][j] = 1
                 }
+
+                // value[i - 1] + v[i - 1][j - w[i - 1]] 表示当前物品价值 加上 （放上一个物品时 在当前容量减去当前物品重量的剩余容量能放下的物品的最大的价值）
                 v[i][j] = Math.max(v[i - 1][j], value[i - 1] + v[i - 1][j - w[i - 1]])
             }
         }
