@@ -5,7 +5,7 @@ package com.vah.let.algorithm.math;
  *@Author HuangJiang
  **/
 fun main() {
-    hanoi(3, "A", "B", "C")
+    hanoi(2, "A", "B", "C")
 }
 
 /**
@@ -25,8 +25,4 @@ fun hanoi(n: Int, from: String, middle: String, to: String) {
         // 将中间位置的盘子移到目标位置
         hanoi(n -1, middle, from, to)
     }
-}
-
-fun hano() {
-
 }

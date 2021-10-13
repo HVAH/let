@@ -5,6 +5,42 @@ package com.vah.let.algorithm.greed;
  *@Author HuangJiang
  **/
 class BroadcastingStation {
+
+    fun next(str: String): IntArray {
+        var i = 0
+        var j = -1
+        val next = IntArray(str.length)
+        next[0] = -1
+        while (i < str.length - 1) {
+            if (j == -1 || str[i] == str[j]) {
+                next[++i] = ++j
+            } else {
+                j = next[j]
+            }
+        }
+        return next
+    }
+
+    fun indexOf(str: String, str2: String): Int {
+        if (str2.length == 0) {
+            return -0
+        }
+        var i = 0
+        var j = 0
+        val next = next(str2)
+        while (i < str.length && j < str2.length) {
+            if (j == -1 || str[i] == str2[j]) {
+                i++
+                j++
+            } else {
+                j = next[j]
+            }
+            if (j == str2.length) {
+                return i - j
+            }
+        }
+        return -1
+    }
 }
 
 fun main() {
@@ -38,3 +74,5 @@ fun main() {
 
     println(r.toString())
 }
+
+

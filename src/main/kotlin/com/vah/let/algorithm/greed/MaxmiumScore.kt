@@ -29,6 +29,36 @@ package com.vah.let.algorithm.greed;
  *@Author HuangJiang
  **/
 class MaxmiumScore {
+    fun maxmiumScore(cards: IntArray, cnt: Int): Int {
+        cards.sortDescending()
+        var lastOdd = 0
+        var lastEven = 0
+        var res = 0
+        for (i in 0 until cnt) {
+            res += cards[i]
+            if (cards[i] and 1 ==0) {
+                lastEven = cards[i]
+            } else {
+                lastOdd = cards[i]
+            }
+        }
+        if (res and 1 == 0) {
+            return res
+        }
+
+        var max1 = 0
+        var max2 = 0
+
+        for (i in cnt until cards.size) {
+            if (lastOdd != 0 && max1 == 0 && cards[i] and 1 == 0) {
+                max1 = res - lastOdd + cards[i]
+            }
+            if (lastEven != 0 && max2 == 0 && cards[i] and 1 != 0) {
+                max2 = res - lastEven + cards[i]
+            }
+        }
+        return Math.max(max1, max2)
+    }
 }
 
 fun maxmiumScore(cards: IntArray, cnt: Int): Int {
