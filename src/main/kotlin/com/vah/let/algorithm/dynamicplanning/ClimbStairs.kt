@@ -44,6 +44,24 @@ fun climbStairs2(n:Int): Int {
     return queen[n]
 }
 
+/**
+ * 使用变量代替前两项 节约内存
+ */
+fun climbStairs3(n: Int): Int {
+    if(n < 3) {
+        return n
+    }
+    var res = 0
+    var t_1 = 1
+    var t_2 = 2
+    for (i in 2 until n) {
+        res = t_1 + t_2
+        t_1 = t_2
+        t_2 = res
+    }
+    return res
+}
+
 fun main() {
     println(climbStairs(100))
 }
