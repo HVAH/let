@@ -13,6 +13,9 @@ public class JdkProxyDemo {
     public static void main(String[] args) {
         MailSendImpl target = new MailSendImpl();
         MailSendInterface o = (MailSendInterface)Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), new MailSendJdkProxy(target));
+        Class<? extends MailSendInterface> aClass = o.getClass();
+        Class<?>[] interfaces = aClass.getInterfaces();
+        Class<?> superclass = aClass.getSuperclass();
         o.send();
     }
 }
