@@ -22,6 +22,7 @@ dp[i][1] = Math.max(dp[i - 1][1], -prices[i])
 确定边界 dp[0][0] = 0  dp[0][1] = -prices[0]
  */
 fun maxProfit(prices: IntArray): Int {
+    val a = Array(10){Array(10){IntArray(10)} }
     val dp = Array(prices.size) { IntArray(2) }
     dp[0][0] = 0
     dp[0][1] = -prices[0]
@@ -66,3 +67,5 @@ fun maxProfit3(prices: IntArray): Int {
     }
     return maxPro
 }
+
+
