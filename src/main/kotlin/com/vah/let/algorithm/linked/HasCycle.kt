@@ -50,6 +50,7 @@ fun hasCycle3(head: ListNode?): Boolean {
             return true
         }
         var tt = t.next
+        // 让每个next指向自身
         t.next = t
         t = tt
     }

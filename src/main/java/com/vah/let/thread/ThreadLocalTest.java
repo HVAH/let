@@ -1,5 +1,9 @@
 package com.vah.let.thread;
 
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @Description
  * @Author Jiang
@@ -7,22 +11,27 @@ package com.vah.let.thread;
  **/
 public class ThreadLocalTest {
     public static void main(String[] args) throws InterruptedException {
-        ThreadLocal t = new ThreadLocal<String>();
+        WeakReference<ThreadLocal> t = new WeakReference<>(new ThreadLocal<String>());
         ThreadLocal t2 = new ThreadLocal<String>();
         Thread a = new Thread(() -> {
-            t.set("a");
+
+            t.get().set(new long[Integer.MAX_VALUE]);
+
             t2.set("at2");
-            System.out.println("a线程get():" + t.get());
+            //System.gc();
+            System.out.println("a线程get():" + t.get().get());
             System.out.println("a线程t2get():" + t2.get());
         }, "a");
         Thread b = new Thread(() -> {
-            t.set("b");
-            System.out.println("b线程get():" + t.get());
+            t.get().set("b");
+            System.out.println("b线程get():" + t.get().get());
         }, "b");
 
         a.start();
         b.start();
         Thread.sleep(5000);
-        System.out.println();
+        System.out.println(0x61c88647);
+
     }
 }
+
