@@ -11,19 +11,19 @@ class FindDuplicates {
  * 下标跟值是一对多关系，建立下标与值的索引，即 i = arr[i]，
  * 当arr[i] == arr[arr[i]]时 即有重复
  */
-fun ad(arr: IntArray): Int {
+fun ad(nums: IntArray): Int {
     var i = 0
-    while (i < arr.size) {
-        if (i == arr[i]) {
+    while (i < nums.size) {
+        if (i == nums[i]) {
             i++
             continue
         }
-        if (arr[i] == arr[arr[i]]) {
-            return arr[i]
+        if (nums[i] == nums[nums[i]]) {
+            return nums[i]
         } else {
-            val t = arr[i]
-            arr[i] = arr[t]
-            arr[t] = t
+            val t = nums[i]
+            nums[i] = nums[t]
+            nums[t] = t
         }
     }
     return -1
