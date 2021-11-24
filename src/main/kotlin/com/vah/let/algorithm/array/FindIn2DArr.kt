@@ -37,3 +37,26 @@ fun findNumberIn2DArray(matrix: Array<IntArray>, target: Int): Boolean {
     }
     return false;
 }
+
+/**
+ * 旋转矩阵后，已右上角的值作为顶点，可以构成一颗排序二叉树，点左边的比它小，右边的比它大，用二叉查找进行查找
+ * 时间复杂度 Olog(m*n)
+ */
+fun findNumberIn2DArray2(matrix: Array<IntArray>, target: Int): Boolean {
+    if (matrix.size == 0 || matrix[0].size == 0) {
+        return false
+    }
+    var i = 0
+    var j: Int = matrix[0].size - 1
+    while (i < matrix.size && j >= 0) {
+        if (target == matrix[i][j]) {
+            return true
+        }
+        if (target < matrix[i][j]) {
+            j--
+        } else {
+            i++
+        }
+    }
+    return false
+}
