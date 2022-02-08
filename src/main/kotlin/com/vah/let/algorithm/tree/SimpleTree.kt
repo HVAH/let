@@ -1,7 +1,6 @@
 package com.vah.let.algorithm.tree;
 
 import java.util.LinkedList
-import kotlin.math.max
 
 /**
  *@Description 简单树
@@ -162,6 +161,33 @@ fun levelOrder2(root: TreeNode?): List<List<Int>> {
         res
 
     } ?: listOf()
+}
+
+
+fun levelOrder3(root: TreeNode?): List<List<Int>> {
+    return root?.let {
+        val res = mutableListOf<List<Int>>()
+        levelOderBfs(listOf(it), res)
+        res
+    } ?: listOf()
+}
+
+/**
+ * 功能描述:
+ * @Param: list 当前层的节点  res  结果
+ * @Return:
+ */
+fun levelOderBfs(clevel: List<TreeNode>, res: MutableList<List<Int>>) {
+    if (clevel.isEmpty()) return
+    val thisRes = mutableListOf<Int>()
+    val nextLevel = mutableListOf<TreeNode>()
+    for (treeNode in clevel) {
+        thisRes.add(treeNode.`val`)
+        treeNode.left?.let { nextLevel.add(it) }
+        treeNode.right?.let { nextLevel.add(it) }
+    }
+    res.add(thisRes)
+    levelOderBfs(nextLevel, res)
 }
 
 
