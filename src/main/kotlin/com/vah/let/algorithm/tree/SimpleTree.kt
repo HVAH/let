@@ -1,7 +1,6 @@
 package com.vah.let.algorithm.tree;
 
 import java.util.LinkedList
-import kotlin.math.max
 
 /**
  *@Description 简单树
@@ -140,6 +139,56 @@ fun sortedArrayToBST(nums: IntArray): TreeNode? {
     return root
 }
 
+
+fun levelOrder2(root: TreeNode?): List<List<Int>> {
+    return root?.let {
+        val list = LinkedList<TreeNode>()
+        list.add(it)
+        val res = mutableListOf<List<Int>>()
+
+        while (!list.isEmpty()) {
+            val of = mutableListOf<Int>()
+            val chil = mutableListOf<TreeNode>();
+            for (i in list.indices) {
+                val pop = list.pop()
+                pop.left?.let { it1 -> chil.add(it1) }
+                pop.right?.let { it1 -> chil.add(it1) }
+                of.add(pop.`val`)
+            }
+            res.add(of)
+            list.addAll(chil)
+        }
+        res
+
+    } ?: listOf()
+}
+
+
+fun levelOrder3(root: TreeNode?): List<List<Int>> {
+    return root?.let {
+        val res = mutableListOf<List<Int>>()
+        levelOderBfs(listOf(it), res)
+        res
+    } ?: listOf()
+}
+
+/**
+ * 功能描述:
+ * @Param: list 当前层的节点  res  结果
+ * @Return:
+ */
+fun levelOderBfs(clevel: List<TreeNode>, res: MutableList<List<Int>>) {
+    if (clevel.isEmpty()) return
+    val thisRes = mutableListOf<Int>()
+    val nextLevel = mutableListOf<TreeNode>()
+    for (treeNode in clevel) {
+        thisRes.add(treeNode.`val`)
+        treeNode.left?.let { nextLevel.add(it) }
+        treeNode.right?.let { nextLevel.add(it) }
+    }
+    res.add(thisRes)
+    levelOderBfs(nextLevel, res)
+}
 
 
 
