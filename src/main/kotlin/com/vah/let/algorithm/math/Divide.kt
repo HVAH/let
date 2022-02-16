@@ -69,7 +69,7 @@ object Divide {
             var tb = b
             var c = 1
 
-            // tb >= Int.MIN_VALUE shr 1 防止 tb shl 1 溢出，若大于最小的一半  则左移一位时会溢出
+            // tb >= Int.MIN_VALUE shr 1 防止 tb shl 1 溢出，若大于最小的一半  则左移一位时会溢出, 溢出后条件一定成立
             while (tb >= Int.MIN_VALUE shr 1 && a <= tb shl 1) {
                 tb += tb
                 c += c
