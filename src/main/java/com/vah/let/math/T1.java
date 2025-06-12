@@ -38,6 +38,13 @@ public class T1 {
 
 
 		System.out.println(new Integer(1000) == 1000D);
+
+		System.out.println("=============================");
+		String s = null; // no error.
+		System.out.println(s.valueOf(0)); // 没有npe，因为对于静态方法的调用编译器会转为String.valueOf(int)
+
+		System.out.println(value++);
+		System.out.println(++value);
 	}
 
 	private static void f(List list) {

@@ -1,4 +1,4 @@
-package com.vah.let.algorithm.dp;
+package com.vah.let.algorithm.dynamicplanning
 
 /**
  * @Description 最大价值

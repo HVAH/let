@@ -43,12 +43,9 @@ fun findNumberIn2DArray(matrix: Array<IntArray>, target: Int): Boolean {
  * 时间复杂度  O(m+n)  思想其实更上面的一样
  */
 fun findNumberIn2DArray2(matrix: Array<IntArray>, target: Int): Boolean {
-    if (matrix.size == 0 || matrix[0].size == 0) {
-        return false
-    }
     var i = 0
     var j: Int = matrix[0].size - 1
-    while (i < matrix.size && j >= 0) {
+    while (j >= 0 && i < matrix.size) {
         if (target == matrix[i][j]) {
             return true
         }
