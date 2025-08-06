@@ -51,7 +51,7 @@ fun findK(k: Int, linkedList: LinkedList): HeroNode? {
     }
     return temp
 
-    
+
 }
 // test2 单向链表反转  头插入法  依次将下一个元素插入到头部
 fun reverse(linkedList: LinkedList): LinkedList {

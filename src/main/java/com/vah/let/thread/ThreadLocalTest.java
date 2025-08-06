@@ -1,8 +1,6 @@
 package com.vah.let.thread;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @Description

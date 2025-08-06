@@ -1,11 +1,7 @@
 package com.vah.let.sort;
 
-import com.vah.let.algorithm.dynamicplanning.Rob;
-
-import java.util.Arrays;
-
 /**
- * @Description
+ * @Description 快速排序
  * @Author vahuang
  **/
 public class QuicklySort {
@@ -24,9 +20,9 @@ public class QuicklySort {
     }
     public static void quicklySort(int[] arr, int left, int right) {
         if (left < right) {
-            int aStandardPoint = qquicklySort(arr, left, right);
-            quicklySort(arr, 0,left - 1);
-            quicklySort(arr, left + 1, right);
+            int middleIndex = qquicklySort(arr, left, right);
+            quicklySort(arr, 0,middleIndex - 1);
+            quicklySort(arr, middleIndex + 1, right);
         }
     }
 
